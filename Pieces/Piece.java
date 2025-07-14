@@ -1,5 +1,7 @@
 package Pieces;
 
+import Utilities.Position;
+
 public abstract class Piece
 {
    int color;
@@ -7,6 +9,5 @@ public abstract class Piece
    
    abstract void possibleMoves();
    
-   //Have Arg. be Position newPos
-   abstract void move();
+   abstract void move(Position newPos);
 }
