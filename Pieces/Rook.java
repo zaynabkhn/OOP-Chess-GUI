@@ -1,18 +1,30 @@
 package Pieces;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Utilities.Position;
 import Utils.Utils;
 
+/**
+ * Represents a Rook chess piece.
+ * The Rook can move any number of squares horizontally or vertically.
+ * This class extends the abstract Piece class.
+ */
 public class Rook extends Piece {
 
+    /**
+     * Constructs a Rook with a specified color and initial position.
+     *
+     * @param color    0 for white, 1 for black
+     * @param position Initial position in standard chess notation (e.g., "A1")
+     */
     public Rook(int color, String position) {
         this.color = color;
         this.position = position;
     }
 
+    /**
+     * Displays all possible horizontal and vertical moves
+     * from the current position (without checking for obstructions).
+     */
     @Override
     public void possibleMoves() {
         System.out.println("Possible Rook moves from " + position + ":");
@@ -22,8 +34,8 @@ public class Rook extends Piece {
         int col = pos[1];
 
         int[][] directions = {
-            {-1, 0}, {1, 0}, // up, down
-            {0, -1}, {0, 1}  // left, right
+            {-1, 0}, {1, 0}, // vertical (up, down)
+            {0, -1}, {0, 1}  // horizontal (left, right)
         };
 
         for (int[] dir : directions) {
@@ -38,18 +50,33 @@ public class Rook extends Piece {
                     break;
 
                 String targetPos = Utils.toPositionString(r, c);
-
-                // To reference the board later
                 System.out.println("Can move to: " + targetPos);
 
-                // Future logic for checking board occupancy goes here
+                // TODO: Add board occupancy checks in future
             }
         }
     }
 
+    /**
+     * Moves the Rook to the given position and prints a message.
+     *
+     * @param newPos The new position to move the Rook to
+     */
     @Override
     public void move(Position newPos) {
         System.out.println("Rook moved to: " + newPos);
-        // update this.position = newPos.toString();
+        // Optionally update internal state
+        // this.position = newPos.toString();
+    }
+
+    /**
+     * Returns the character representing the Rook for display on the board.
+     *
+     * @return "R" for white rook, "r" for black rook
+     */
+    @Override
+    public String toString() {
+        return color == 0 ? "R" : "r";
     }
 }
+
