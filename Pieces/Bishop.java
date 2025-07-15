@@ -1,6 +1,6 @@
-
 package Pieces;
 
+import Utilities.Position; // Updating to add this
 import Utils.Utils;
 
 public class Bishop extends Piece {
@@ -19,8 +19,8 @@ public class Bishop extends Piece {
         int col = pos[1];
 
         int[][] directions = {
-            {-1, -1}, {-1, 1}, // upper-left, upper-right
-            {1, -1}, {1, 1}    // lower-left, lower-right
+            {-1, -1}, {-1, 1},
+            {1, -1}, {1, 1}
         };
 
         for (int[] dir : directions) {
@@ -35,16 +35,15 @@ public class Bishop extends Piece {
                     break;
 
                 String targetPos = Utils.toPositionString(r, c);
-
-                // For now, just print possible squares
-                // In Phase 2, you'd check board for collisions and captures
                 System.out.println("Can move to: " + targetPos);
             }
         }
     }
 
     @Override
-    public void move() {
-        System.out.println("Bishop moved to new position (to be implemented).");
+    public void move(Position newPos) {
+        System.out.println("Bishop moved to: " + newPos);
+        // Add logic to update internal position if needed:
+        // this.position = newPos.toString();
     }
 }

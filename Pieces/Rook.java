@@ -3,7 +3,7 @@ package Pieces;
 import java.util.ArrayList;
 import java.util.List;
 
-import Board.Board; // Assuming you’ll have a Board class with getPiece(row, col)
+import Utilities.Position;
 import Utils.Utils;
 
 public class Rook extends Piece {
@@ -39,20 +39,17 @@ public class Rook extends Piece {
 
                 String targetPos = Utils.toPositionString(r, c);
 
-                // You’ll need to reference the board later
+                // To reference the board later
                 System.out.println("Can move to: " + targetPos);
 
-                // When Board is implemented:
-                // Piece target = board.getPiece(r, c);
-                // if (target == null) { add targetPos to list }
-                // else if (target.color != this.color) { add and break }
-                // else break;
+                // Future logic for checking board occupancy goes here
             }
         }
     }
 
     @Override
-    public void move() {
-        System.out.println("Rook moved to new position (to be implemented).");
+    public void move(Position newPos) {
+        System.out.println("Rook moved to: " + newPos);
+        // update this.position = newPos.toString();
     }
 }
