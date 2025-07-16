@@ -6,6 +6,7 @@ import Utils.Utils;
 /**
  * Represents a Queen chess piece.
  * The Queen combines the power of a Rook and Bishop.
+ * This class extends the abstract Piece class.
  */
 public class Queen extends Piece {
 
