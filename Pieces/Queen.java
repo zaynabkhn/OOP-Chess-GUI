@@ -14,6 +14,12 @@ public class Queen extends Piece {
         this.position = position;
     }
 
+    /**
+     * Lists the possible moves of a Queen chess piece.
+     *
+     * @param - none
+     * @return - none
+     */
     @Override
     public void possibleMoves() {
         System.out.println("Possible Queen moves from " + position + ":");
