@@ -6,6 +6,7 @@ import Utils.Utils;
 /**
  * Represents a King chess piece.
  * The King can move one square in any direction.
+ * This class extends the abstract Piece class.
  */
 public class King extends Piece {
 
