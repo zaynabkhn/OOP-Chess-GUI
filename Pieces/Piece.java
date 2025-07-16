@@ -11,12 +11,18 @@ public abstract class Piece
    String position;
 
    /**
-     * Lists the possible moves of a chess piece.
+     * Will list the possible moves of a chess piece.
      *
      * @param - none
      * @return - none
      */
    abstract void possibleMoves();
-   
+
+   /**
+     * Will move the piece to the given position and prints a message.
+     *
+     * @param newPos - The new position to move the piece to.
+     * @return - none
+     */
    abstract void move(Position newPos);
 }
