@@ -5,6 +5,8 @@ import Utils.Utils;
 
 /**
  * Represents a Knight chess piece, and Knights move in L-shaped patterns.
+ * The Knight can move in an 'L' in any direction.
+ * This class extends the abstract Piece class.
  */
 public class Knight extends Piece 
 {
