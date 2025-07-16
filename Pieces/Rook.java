@@ -22,8 +22,11 @@ public class Rook extends Piece {
     }
 
     /**
-     * Displays all possible horizontal and vertical moves
-     * from the current position (without checking for obstructions).
+     *  Displays all possible horizontal and vertical moves
+     *  from the current position (without checking for obstructions).
+     *
+     * @param - none
+     * @return - none
      */
     @Override
     public void possibleMoves() {
