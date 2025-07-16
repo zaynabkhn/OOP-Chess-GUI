@@ -59,6 +59,12 @@ public class Pawn extends Piece
             System.out.println("Can capture at: " + Utils.toPositionString(row + direction, col + 1));
     }
 
+    /**
+     * Moves the Pawn to the given position and prints a message.
+     *
+     * @param newPos - The new position to move the Pawn to.
+     * @return - none
+     */
     @Override
     public void move(Position newPos) {
         System.out.println("Pawn moved to: " + newPos);
