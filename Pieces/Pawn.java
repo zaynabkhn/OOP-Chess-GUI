@@ -21,7 +21,12 @@ public class Pawn extends Piece
         this.position = position;
     }
 
-    
+    /**
+     * Lists the possible moves of a Pawn chess piece.
+     *
+     * @param - none
+     * @return - none
+     */
     @Override
     public void possibleMoves() {
         System.out.println("Possible Pawn moves from " + position + ":");
