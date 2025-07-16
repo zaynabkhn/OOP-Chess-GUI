@@ -6,6 +6,8 @@ import Utils.Utils;
 /**
  * Represents a Pawn chess piece.
  * The Pawn moves forward 1 square, or 2 squares from its initial position.
+ * Attacks diagonally.
+ * This class extends the abstract Piece class.
  */
 public class Pawn extends Piece 
 {
