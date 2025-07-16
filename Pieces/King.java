@@ -14,6 +14,12 @@ public class King extends Piece {
         this.position = position;
     }
 
+    /**
+     * Checks and prints the possible moves for the King.
+     *
+     * @param - none
+     * @return - none
+     */
     @Override
     public void possibleMoves() {
         System.out.println("Possible King moves from " + position + ":");
@@ -31,11 +37,23 @@ public class King extends Piece {
         }
     }
 
+    /**
+     * Outputs to show the new position.
+     *
+     * @param newPos - Object of type Position that gives the coordinate of the position of a piece.
+     * @return - none
+     */
     @Override
     public void move(Position newPos) {
         System.out.println("King moved to: " + newPos);
     }
 
+    /**
+     * Gives a String "K" or "k" for the print depening on if the color is black or white?
+     *
+     * @param - none
+     * @return If COLOR == 0, return "K", otherwise "k"?
+     */
     @Override
     public String toString() {
         return color == 0 ? "K" : "k";
