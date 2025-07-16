@@ -8,8 +8,15 @@ import Utils.Utils;
  * The King can move one square in any direction.
  * This class extends the abstract Piece class.
  */
-public class King extends Piece {
-
+public class King extends Piece 
+{
+    /**
+     * Constructs a King with a specified color and initial position.
+     *
+     * @param color - 0 for white, 1 for black
+     * @param position - Initial position in standard chess notation (e.g., "C1")
+     * @return - none
+     */
     public King(int color, String position) {
         this.color = color;
         this.position = position;
