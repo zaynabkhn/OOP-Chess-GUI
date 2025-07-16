@@ -50,6 +50,12 @@ public class Queen extends Piece {
         }
     }
 
+    /**
+     * Moves the Queen to the given position and prints a message.
+     *
+     * @param newPos - The new position to move the Queen to.
+     * @return - none
+     */
     @Override
     public void move(Position newPos) {
         System.out.println("Queen moved to: " + newPos);
