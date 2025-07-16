@@ -49,10 +49,10 @@ public class King extends Piece {
     }
 
     /**
-     * Gives a String "K" or "k" for the print depening on if the color is black or white?
+     * Gives a String "K" or "k" for the print depending on if the color is black or white.
      *
      * @param - none
-     * @return If COLOR == 0, return "K", otherwise "k"?
+     * @return If color == 0 (black), return "K", otherwise "k".
      */
     @Override
     public String toString() {
