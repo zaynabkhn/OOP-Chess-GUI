@@ -8,7 +8,14 @@ public class Position
 {
    private final int row;
    private final int column;
-   
+
+   /**
+     * Constructs the Position object, using a given row and column to create a coordinate.
+     *
+     * @param r - Row number (int)
+     * @param position - Column number (int)
+     * @return - none
+     */
    public Position(int r, int c)
    {
       this.row = r;
