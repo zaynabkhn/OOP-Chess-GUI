@@ -13,8 +13,9 @@ public class Bishop extends Piece {
     /**
      * Constructs a Bishop with a specified color and initial position.
      *
-     * @param color    0 for white, 1 for black
-     * @param position Initial position in standard chess notation (e.g., "C1")
+     * @param color - 0 for white, 1 for black
+     * @param position - Initial position in standard chess notation (e.g., "C1")
+     * @return - none
      */
     public Bishop(int color, String position) {
         this.color = color;
@@ -24,6 +25,9 @@ public class Bishop extends Piece {
     /**
      * Displays all possible diagonal moves from the current position
      * (without checking for obstructions).
+     * 
+     * @param - none
+     * @return - none
      */
     @Override
     public void possibleMoves() {
@@ -61,6 +65,7 @@ public class Bishop extends Piece {
      * Moves the Bishop to the given position and prints a message.
      *
      * @param newPos The new position to move the Bishop to
+     * @return - none
      */
     @Override
     public void move(Position newPos) {
@@ -72,6 +77,7 @@ public class Bishop extends Piece {
     /**
      * Returns the character representing the Bishop for display on the board.
      *
+     * @param - none
      * @return "B" for white bishop, "b" for black bishop
      */
     @Override
