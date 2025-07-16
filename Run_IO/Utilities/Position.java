@@ -9,27 +9,25 @@ public class Position
    {
       this.row = r;
       this.column = c;
-   }
-   
-   /*
-   public Position(String coordinate)
-   {
-      //Set row and column based on the String.
-   }
-   
-   
-   public String toNotation()
-   {
-      //May not be necessary.
-   }
-   */
-   
-   
+   } 
+
+   /**
+     * Obtains the row of a coordinate.
+     *
+     * @param - none
+     * @return int - The row elemnt of a piece, given its position.
+     */
    public int getRow()
    {
       return row;
    }
-   
+
+   /**
+     * Obtains the column of a coordinate.
+     *
+     * @param - none
+     * @return int - The column elemnt of a piece, given its position.
+     */
    public int getColumn()
    {
       return column;
