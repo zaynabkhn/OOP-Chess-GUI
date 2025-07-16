@@ -7,13 +7,21 @@ import Utils.Utils;
  * Represents a Pawn chess piece.
  * The Pawn moves forward 1 square, or 2 squares from its initial position.
  */
-public class Pawn extends Piece {
-
+public class Pawn extends Piece 
+{
+    /**
+     * Constructs a Pawn Chess piece, using a given color and coordinate.
+     *
+     * @param color - 0 for white, 1 for black
+     * @param position - Initial position in standard chess notation (e.g., "C1")
+     * @return - none
+     */
     public Pawn(int color, String position) {
         this.color = color;
         this.position = position;
     }
 
+    
     @Override
     public void possibleMoves() {
         System.out.println("Possible Pawn moves from " + position + ":");
