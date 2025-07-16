@@ -63,7 +63,8 @@ public class Rook extends Piece {
     /**
      * Moves the Rook to the given position and prints a message.
      *
-     * @param newPos The new position to move the Rook to
+     * @param newPos The new position to move the Rook to.
+     * @return - none
      */
     @Override
     public void move(Position newPos) {
