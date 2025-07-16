@@ -4,16 +4,29 @@ import Utilities.Position;
 import Utils.Utils;
 
 /**
- * Represents a Knight chess piece.
- * Knights move in L-shaped patterns.
+ * Represents a Knight chess piece, and Knights move in L-shaped patterns.
  */
-public class Knight extends Piece {
-
-    public Knight(int color, String position) {
+public class Knight extends Piece 
+{
+    /**
+     * Constructs a Knight Chess piece, using a given color and coordinate.
+     *
+     * @param color - 0 for white, 1 for black
+     * @param position - Initial position in standard chess notation (e.g., "C1")
+     * @return - none
+     */
+    public Knight(int color, String position) 
+    {
         this.color = color;
         this.position = position;
     }
 
+    /**
+     * Lists the possible moves of a Knight chess piece.
+     *
+     * @param - none
+     * @return - none
+     */
     @Override
     public void possibleMoves() {
         System.out.println("Possible Knight moves from " + position + ":");
@@ -36,11 +49,23 @@ public class Knight extends Piece {
         }
     }
 
+    /**
+     * Prints the new location that the Knight piece has moved to.
+     *
+     * @param newPos - A coordinate of type Position that holds the location of where the Knight moves.
+     * @return - none
+     */
     @Override
     public void move(Position newPos) {
         System.out.println("Knight moved to: " + newPos);
     }
 
+    /**
+     * Returns the String that respresnts the Knight depending on color.
+     *
+     * @param - one
+     * @return String - If color == 0 (black), return "N", "n" otherwise.
+     */
     @Override
     public String toString() {
         return color == 0 ? "N" : "n";
