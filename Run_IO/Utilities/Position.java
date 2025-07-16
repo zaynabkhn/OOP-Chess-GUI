@@ -1,5 +1,9 @@
 package Utilities;
 
+/**
+ * This is the class Position that arranges the coordinate location for each piece.
+ * It is also used to help move a piece to a new location.
+ */
 public class Position
 {
    private final int row;
