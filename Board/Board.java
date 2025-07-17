@@ -1,13 +1,7 @@
 package Board;
 
-import Pieces.Piece;
-import Pieces.Rook;
-import Pieces.Bishop;
-import Pieces.Knight;
-import Pieces.Queen;
-import Pieces.King;
-import Pieces.Pawn;
-import Utilities.Position;
+import Pieces.*;
+import Utilities.*;
 
 /**
  * The class Board creates everything necessary for setting up the Chess board. 
