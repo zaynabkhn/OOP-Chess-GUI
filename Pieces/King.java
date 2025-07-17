@@ -1,8 +1,6 @@
 package Pieces;
 
-import Utilities.Position;
-import Utils.Utils;
-
+import Utilities.*;
 /**
  * Represents a King chess piece.
  * The King can move one square in any direction.
