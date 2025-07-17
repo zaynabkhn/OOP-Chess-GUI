@@ -1,3 +1,4 @@
+
 package Pieces;
 
 import Utilities.*;
@@ -7,6 +8,7 @@ import Utilities.*;
  * The Bishop can move diagonally in all directions.
  * This class extends the abstract Piece class.
  */
+
 public class Bishop extends Piece {
 
     /**
@@ -17,8 +19,7 @@ public class Bishop extends Piece {
      * @return - none
      */
     public Bishop(int color, String position) {
-        this.color = color;
-        this.position = position;
+        super(color, position);
     }
 
     /**
@@ -29,35 +30,14 @@ public class Bishop extends Piece {
      * @return - none
      */
     @Override
-    public void possibleMoves() {
-        System.out.println("Possible Bishop moves from " + position + ":");
+    public boolean isValidMove(String toPosition) {
+        // Placeholder logic
+        return true;
+    }
 
-        int[] pos = Utils.toRowCol(position);
-        int row = pos[0];
-        int col = pos[1];
-
-        int[][] directions = {
-            {-1, -1}, {-1, 1}, // upper-left, upper-right
-            {1, -1}, {1, 1}    // lower-left, lower-right
-        };
-
-        for (int[] dir : directions) {
-            int r = row;
-            int c = col;
-
-            while (true) {
-                r += dir[0];
-                c += dir[1];
-
-                if (r < 0 || r >= 8 || c < 0 || c >= 8)
-                    break;
-
-                String targetPos = Utils.toPositionString(r, c);
-                System.out.println("Can move to: " + targetPos);
-
-                // TODO: Add board occupancy checks in future
-            }
-        }
+    @Override
+    public String toString() {
+        return color == 0 ? "B" : "b";
     }
 
     /**
@@ -66,11 +46,8 @@ public class Bishop extends Piece {
      * @param newPos The new position to move the Bishop to
      * @return - none
      */
-    @Override
-    public void move(Position newPos) {
-        System.out.println("Bishop moved to: " + newPos);
-        // Optionally update internal state
-        // this.position = newPos.toString();
+    public void move(Position newPosition) {
+        setPosition(newPosition.toString());
     }
 
     /**
@@ -79,8 +56,7 @@ public class Bishop extends Piece {
      * @param - none
      * @return "B" for white bishop, "b" for black bishop
      */
-    @Override
-    public String toString() {
-        return color == 0 ? "B" : "b";
+    public String[] possibleMoves() {
+        return new String[] {};
     }
 }

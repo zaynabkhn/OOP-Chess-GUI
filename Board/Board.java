@@ -1,7 +1,7 @@
 package Board;
 
 import Pieces.*;
-import Utilities.*;
+import Utilities.Position;
 
 /**
  * The class Board creates everything necessary for setting up the Chess board. 
@@ -61,6 +61,7 @@ public class Board {
      * @param - none
      * @return - none
      */
+
     public void display() {
         System.out.println("    A   B   C   D   E   F   G   H");
         System.out.println("  +---+---+---+---+---+---+---+---+");
@@ -121,7 +122,7 @@ public class Board {
         }
 
         if (board[toRow][toCol] != null &&
-            board[toRow][toCol].color == movingPiece.color) {
+            board[toRow][toCol].getColor() == movingPiece.getColor()) {
             System.out.println("Cannot capture your own piece.");
             return;
         }
@@ -131,10 +132,11 @@ public class Board {
         board[fromRow][fromCol] = null;
 
         // Update piece's internal position
-        movingPiece.position = "" + (char) ('A' + toCol) + (8 - toRow);
+        String newPos = "" + (char) ('A' + toCol) + (8 - toRow);
+        movingPiece.setPosition(newPos);
 
         System.out.println("Moved " + movingPiece.getClass().getSimpleName() +
-            " to " + movingPiece.position);
+            " to " + movingPiece.getPosition());
     }
 
     /**
@@ -148,3 +150,4 @@ public class Board {
         return row >= 0 && row < 8 && col >= 0 && col < 8;
     }
 }
+

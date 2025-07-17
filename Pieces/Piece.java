@@ -1,28 +1,30 @@
 package Pieces;
 
-import Utilities.*;
-
 /**
  * This is the abstract class Piece that works as the base for all pieces in the Chess game.
  */
-public abstract class Piece
-{
-   int color;
-   String position;
+public abstract class Piece {
+    protected int color; // 0 for white, 1 for black
+    protected String position;
 
-   /**
-     * Will list the possible moves of a chess piece.
-     *
-     * @param - none
-     * @return - none
-     */
-   abstract void possibleMoves();
+    public Piece(int color, String position) {
+        this.color = color;
+        this.position = position;
+    }
 
-   /**
-     * Will move the piece to the given position and prints a message.
-     *
-     * @param newPos - The new position to move the piece to.
-     * @return - none
-     */
-   abstract void move(Position newPos);
+    public int getColor() {
+        return color;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String newPosition) {
+        this.position = newPosition;
+    }
+
+    public abstract boolean isValidMove(String toPosition);
+
+    public abstract String toString();
 }

@@ -1,13 +1,14 @@
 package Pieces;
 
-import Utilities.*;
+import Utilities.Position;
 /**
  * Represents a King chess piece.
  * The King can move one square in any direction.
  * This class extends the abstract Piece class.
  */
-public class King extends Piece 
-{
+
+public class King extends Piece {
+
     /**
      * Constructs a King with a specified color and initial position.
      *
@@ -16,42 +17,13 @@ public class King extends Piece
      * @return - none
      */
     public King(int color, String position) {
-        this.color = color;
-        this.position = position;
+        super(color, position);
     }
 
-    /**
-     * Checks and prints the possible moves for the King.
-     *
-     * @param - none
-     * @return - none
-     */
     @Override
-    public void possibleMoves() {
-        System.out.println("Possible King moves from " + position + ":");
-
-        int[] pos = Utils.toRowCol(position);
-        int row = pos[0];
-        int col = pos[1];
-
-        for (int r = row - 1; r <= row + 1; r++) {
-            for (int c = col - 1; c <= col + 1; c++) {
-                if ((r != row || c != col) && Utils.isInBounds(r, c)) {
-                    System.out.println("Can move to: " + Utils.toPositionString(r, c));
-                }
-            }
-        }
-    }
-
-    /**
-     * Outputs to show the new position.
-     *
-     * @param newPos - Object of type Position that gives the coordinate of the position of a piece.
-     * @return - none
-     */
-    @Override
-    public void move(Position newPos) {
-        System.out.println("King moved to: " + newPos);
+    public boolean isValidMove(String toPosition) {
+        // Placeholder logic
+        return true;
     }
 
     /**
@@ -63,5 +35,25 @@ public class King extends Piece
     @Override
     public String toString() {
         return color == 0 ? "K" : "k";
+    }
+
+    /**
+     * Outputs to show the new position.
+     *
+     * @param newPos - Object of type Position that gives the coordinate of the position of a piece.
+     * @return - none
+     */
+    public void move(Position newPosition) {
+        setPosition(newPosition.toString());
+    }
+
+    /**
+     * Checks and prints the possible moves for the King.
+     *
+     * @param - none
+     * @return - none
+     */
+    public String[] possibleMoves() {
+        return new String[] {};
     }
 }

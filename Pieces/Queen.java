@@ -1,6 +1,6 @@
 package Pieces;
 
-import Utilities.*;
+import Utilities.Position;
 
 /**
  * Represents a Queen chess piece.
@@ -10,43 +10,18 @@ import Utilities.*;
 public class Queen extends Piece {
 
     public Queen(int color, String position) {
-        this.color = color;
-        this.position = position;
+        super(color, position);
     }
 
-    /**
-     * Lists the possible moves of a Queen chess piece.
-     *
-     * @param - none
-     * @return - none
-     */
     @Override
-    public void possibleMoves() {
-        System.out.println("Possible Queen moves from " + position + ":");
+    public boolean isValidMove(String toPosition) {
+        // Placeholder logic
+        return true;
+    }
 
-        int[] pos = Utils.toRowCol(position);
-        int row = pos[0];
-        int col = pos[1];
-
-        int[][] directions = {
-            {-1, 0}, {1, 0}, {0, -1}, {0, 1},     
-            {-1, -1}, {-1, 1}, {1, -1}, {1, 1}    
-        };
-
-        for (int[] dir : directions) {
-            int r = row;
-            int c = col;
-
-            while (true) {
-                r += dir[0];
-                c += dir[1];
-
-                if (!Utils.isInBounds(r, c)) break;
-
-                System.out.println("Can move to: " + Utils.toPositionString(r, c));
-                // In Phase 2: check for collisions
-            }
-        }
+    @Override
+    public String toString() {
+        return color == 0 ? "Q" : "q";
     }
 
     /**
@@ -55,13 +30,17 @@ public class Queen extends Piece {
      * @param newPos - The new position to move the Queen to.
      * @return - none
      */
-    @Override
-    public void move(Position newPos) {
-        System.out.println("Queen moved to: " + newPos);
+    public void move(Position newPosition) {
+        setPosition(newPosition.toString());
     }
 
-    @Override
-    public String toString() {
-        return color == 0 ? "Q" : "q";
+    /**
+     * Lists the possible moves of a Queen chess piece.
+     *
+     * @param - none
+     * @return - none
+     */
+    public String[] possibleMoves() {
+        return new String[] {};
     }
 }
