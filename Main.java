@@ -3,9 +3,17 @@ import Utilities.Position;
 import java.util.Scanner;
 
 /**
- * Main class to run the Chess game.
+ * Main class to run the Console Chess game.
+ * This class handles user input, board display, and turn-based gameplay.
  */
 public class Main {
+
+    /**
+     * The entry point of the Chess game.
+     * Initializes the game board, displays it, and handles user input in a loop.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Board board = new Board();
@@ -47,7 +55,10 @@ public class Main {
     }
 
     /**
-     * Converts a standard chess notation (e.g., "E2") into a Position object.
+     * Converts a standard chess notation string (e.g., "E2") to a Position object.
+     *
+     * @param notation The chess notation string.
+     * @return A Position object representing the row and column on the board.
      */
     public static Position toPosition(String notation) {
         int col = notation.charAt(0) - 'A';
@@ -56,7 +67,10 @@ public class Main {
     }
 
     /**
-     * Checks if the string is a valid chess board position.
+     * Validates if a given string represents a valid chess board position.
+     *
+     * @param s The string to validate (e.g., "A2", "H8").
+     * @return true if the string is a valid position, false otherwise.
      */
     public static boolean isValidPosition(String s) {
         if (s.length() != 2) return false;

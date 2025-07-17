@@ -1,14 +1,11 @@
 package Board;
 
-import Pieces.Piece;
-import Pieces.Rook;
-import Pieces.Bishop;
-import Pieces.Knight;
-import Pieces.Queen;
-import Pieces.King;
-import Pieces.Pawn;
+import Pieces.*;
 import Utilities.Position;
 
+/**
+ * The class Board creates everything necessary for setting up the Chess board. 
+ */
 public class Board {
 
     private Piece[][] board;
@@ -18,8 +15,12 @@ public class Board {
         initializeBoard();
     }
 
-    // Initializes the board with all pieces in their standard starting positions.
-    
+    /**
+     * Initializes the board with all pieces in their standard starting positions.
+     *
+     * @param - none
+     * @return - none
+     */
     private void initializeBoard() {
         // Row 0 - Black major pieces
         board[0][0] = new Rook(1, "A8");
@@ -53,10 +54,14 @@ public class Board {
         board[7][6] = new Knight(0, "G1");
         board[7][7] = new Rook(0, "H1");
     }
+    
+    /**
+     * Displays the board in the console with coordinates and pieces.
+     *
+     * @param - none
+     * @return - none
+     */
 
-    
-    // Displays the board in the console with coordinates and pieces.
-    
     public void display() {
         System.out.println("    A   B   C   D   E   F   G   H");
         System.out.println("  +---+---+---+---+---+---+---+---+");
@@ -81,9 +86,12 @@ public class Board {
         System.out.println("    A   B   C   D   E   F   G   H");
     }
 
-    
-    // Returns the Piece at the given Position, or null if empty or out of bounds.
-    
+    /**
+     * Returns the Piece at the given Position, or null if empty or out of bounds.
+     *
+     * @param pos - An object of type Position that contains a coordinate to identify a piece at that coordinate, if it exists and is in bounds.
+     * @return board[row][col] if the coordinate given by pos is in bounds. Return null, otherwise.
+     */
     public Piece getPiece(Position pos) {
         int row = pos.getRow();
         int col = pos.getColumn();
@@ -93,9 +101,13 @@ public class Board {
         return null;
     }
 
-    
-    // Moves a piece from one position to another, if valid.
-    
+    /**
+     * Moves a piece from one position to another, if valid.
+     *
+     * @param from - Object of type Position that gives the coordinate of the starting position of a piece.
+     * @param to - Object of type Position that gives the coordinate of the end position of a piece.
+     * @return - none
+     */
     public void movePiece(Position from, Position to) {
         int fromRow = from.getRow();
         int fromCol = from.getColumn();
@@ -110,7 +122,7 @@ public class Board {
         }
 
         if (board[toRow][toCol] != null &&
-            board[toRow][toCol].color == movingPiece.color) {
+            board[toRow][toCol].getColor() == movingPiece.getColor()) {
             System.out.println("Cannot capture your own piece.");
             return;
         }
@@ -120,13 +132,22 @@ public class Board {
         board[fromRow][fromCol] = null;
 
         // Update piece's internal position
-        movingPiece.position = "" + (char) ('A' + toCol) + (8 - toRow);
+        String newPos = "" + (char) ('A' + toCol) + (8 - toRow);
+        movingPiece.setPosition(newPos);
 
         System.out.println("Moved " + movingPiece.getClass().getSimpleName() +
-            " to " + movingPiece.position);
+            " to " + movingPiece.getPosition());
     }
 
+    /**
+     * Checks if a piece is in bounds, given coordinates.
+     *
+     * @param row - A primitive of type int that gives the row portion of the coordinate.
+     * @param col - A primitive of type int that gives the column portion of the coordinate.
+     * @return boolean
+     */
     private boolean isInBounds(int row, int col) {
         return row >= 0 && row < 8 && col >= 0 && col < 8;
     }
 }
+

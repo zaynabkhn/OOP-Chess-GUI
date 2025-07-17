@@ -1,81 +1,62 @@
+
 package Pieces;
 
-import Utilities.Position;
-import Utils.Utils;
+import Utilities.*;
 
 /**
  * Represents a Bishop chess piece.
  * The Bishop can move diagonally in all directions.
  * This class extends the abstract Piece class.
  */
+
 public class Bishop extends Piece {
 
     /**
      * Constructs a Bishop with a specified color and initial position.
      *
-     * @param color    0 for white, 1 for black
-     * @param position Initial position in standard chess notation (e.g., "C1")
+     * @param color - 0 for white, 1 for black
+     * @param position - Initial position in standard chess notation (e.g., "C1")
+     * @return - none
      */
     public Bishop(int color, String position) {
-        this.color = color;
-        this.position = position;
+        super(color, position);
     }
 
     /**
      * Displays all possible diagonal moves from the current position
      * (without checking for obstructions).
+     * 
+     * @param - none
+     * @return - none
      */
     @Override
-    public void possibleMoves() {
-        System.out.println("Possible Bishop moves from " + position + ":");
+    public boolean isValidMove(String toPosition) {
+        // Placeholder logic
+        return true;
+    }
 
-        int[] pos = Utils.toRowCol(position);
-        int row = pos[0];
-        int col = pos[1];
-
-        int[][] directions = {
-            {-1, -1}, {-1, 1}, // upper-left, upper-right
-            {1, -1}, {1, 1}    // lower-left, lower-right
-        };
-
-        for (int[] dir : directions) {
-            int r = row;
-            int c = col;
-
-            while (true) {
-                r += dir[0];
-                c += dir[1];
-
-                if (r < 0 || r >= 8 || c < 0 || c >= 8)
-                    break;
-
-                String targetPos = Utils.toPositionString(r, c);
-                System.out.println("Can move to: " + targetPos);
-
-                // TODO: Add board occupancy checks in future
-            }
-        }
+    @Override
+    public String toString() {
+        return color == 0 ? "B" : "b";
     }
 
     /**
      * Moves the Bishop to the given position and prints a message.
      *
      * @param newPos The new position to move the Bishop to
+     * @return - none
      */
-    @Override
-    public void move(Position newPos) {
-        System.out.println("Bishop moved to: " + newPos);
-        // Optionally update internal state
-        // this.position = newPos.toString();
+    public void move(Position newPosition) {
+        setPosition(newPosition.toString());
     }
 
     /**
      * Returns the character representing the Bishop for display on the board.
      *
+     * @param - none
      * @return "B" for white bishop, "b" for black bishop
      */
-    @Override
-    public String toString() {
-        return color == 0 ? "B" : "b";
+    public String[] possibleMoves() {
+        return new String[] {};
     }
 }

@@ -1,56 +1,54 @@
 package Pieces;
 
 import Utilities.Position;
-import Utils.Utils;
 
 /**
  * Represents a Pawn chess piece.
  * The Pawn moves forward 1 square, or 2 squares from its initial position.
+ * Attacks diagonally.
+ * This class extends the abstract Piece class.
  */
 public class Pawn extends Piece {
 
+    /**
+     * Constructs a Pawn Chess piece, using a given color and coordinate.
+     *
+     * @param color - 0 for white, 1 for black
+     * @param position - Initial position in standard chess notation (e.g., "C1")
+     * @return - none
+     */
     public Pawn(int color, String position) {
-        this.color = color;
-        this.position = position;
+        super(color, position);
     }
 
     @Override
-    public void possibleMoves() {
-        System.out.println("Possible Pawn moves from " + position + ":");
-
-        int[] pos = Utils.toRowCol(position);
-        int row = pos[0];
-        int col = pos[1];
-
-        int direction = (color == 0) ? -1 : 1; // white moves up, black down
-
-        // 1 step forward
-        int oneStep = row + direction;
-        if (Utils.isInBounds(oneStep, col))
-            System.out.println("Can move to: " + Utils.toPositionString(oneStep, col));
-
-        // 2 steps forward if on starting row
-        boolean startingRow = (color == 0 && row == 6) || (color == 1 && row == 1);
-        if (startingRow) {
-            int twoStep = row + 2 * direction;
-            if (Utils.isInBounds(twoStep, col))
-                System.out.println("Can move to: " + Utils.toPositionString(twoStep, col));
-        }
-
-        // Capture moves (diagonal) – no validation yet
-        if (Utils.isInBounds(row + direction, col - 1))
-            System.out.println("Can capture at: " + Utils.toPositionString(row + direction, col - 1));
-        if (Utils.isInBounds(row + direction, col + 1))
-            System.out.println("Can capture at: " + Utils.toPositionString(row + direction, col + 1));
-    }
-
-    @Override
-    public void move(Position newPos) {
-        System.out.println("Pawn moved to: " + newPos);
+    public boolean isValidMove(String toPosition) {
+        // Placeholder logic
+        return true;
     }
 
     @Override
     public String toString() {
         return color == 0 ? "P" : "p";
+    }
+
+    /**
+     * Moves the Pawn to the given position and prints a message.
+     *
+     * @param newPos - The new position to move the Pawn to.
+     * @return - none
+     */
+    public void move(Position newPosition) {
+        setPosition(newPosition.toString());
+    }
+
+    /**
+     * Lists the possible moves of a Pawn chess piece.
+     *
+     * @param - none
+     * @return - none
+     */
+    public String[] possibleMoves() {
+        return new String[] {};
     }
 }

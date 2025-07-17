@@ -1,7 +1,6 @@
 package Pieces;
 
 import Utilities.Position;
-import Utils.Utils;
 
 /**
  * Represents a Rook chess piece.
@@ -17,56 +16,13 @@ public class Rook extends Piece {
      * @param position Initial position in standard chess notation (e.g., "A1")
      */
     public Rook(int color, String position) {
-        this.color = color;
-        this.position = position;
+        super(color, position);
     }
 
-    /**
-     * Displays all possible horizontal and vertical moves
-     * from the current position (without checking for obstructions).
-     */
     @Override
-    public void possibleMoves() {
-        System.out.println("Possible Rook moves from " + position + ":");
-
-        int[] pos = Utils.toRowCol(position);
-        int row = pos[0];
-        int col = pos[1];
-
-        int[][] directions = {
-            {-1, 0}, {1, 0}, // vertical (up, down)
-            {0, -1}, {0, 1}  // horizontal (left, right)
-        };
-
-        for (int[] dir : directions) {
-            int r = row;
-            int c = col;
-
-            while (true) {
-                r += dir[0];
-                c += dir[1];
-
-                if (r < 0 || r >= 8 || c < 0 || c >= 8)
-                    break;
-
-                String targetPos = Utils.toPositionString(r, c);
-                System.out.println("Can move to: " + targetPos);
-
-                // TODO: Add board occupancy checks in future
-            }
-        }
-    }
-
-    /**
-     * Moves the Rook to the given position and prints a message.
-     *
-     * @param newPos The new position to move the Rook to
-     */
-    @Override
-    public void move(Position newPos) {
-        System.out.println("Rook moved to: " + newPos);
-        // Optionally update internal state
-        // this.position = newPos.toString();
+    public boolean isValidMove(String toPosition) {
+        // Stub logic – just return true for now
+        return true;
     }
 
     /**
@@ -78,5 +34,26 @@ public class Rook extends Piece {
     public String toString() {
         return color == 0 ? "R" : "r";
     }
-}
 
+    /**
+     *  Displays all possible horizontal and vertical moves
+     *  from the current position (without checking for obstructions).
+     *
+     * @param - none
+     * @return - none
+     */
+    public String[] possibleMoves() {
+        // You can implement real logic later
+        return new String[] {};
+    }
+
+    /**
+     * Moves the Rook to the given position and prints a message.
+     *
+     * @param newPos The new position to move the Rook to.
+     * @return - none
+     */
+    public void move(Position newPosition) {
+        setPosition(newPosition.toString()); 
+    }
+}
