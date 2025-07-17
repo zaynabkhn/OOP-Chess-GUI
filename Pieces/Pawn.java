@@ -1,7 +1,6 @@
 package Pieces;
 
-import Utilities.Position;
-import Utils.Utils;
+import Utilities.*;
 
 /**
  * Represents a Pawn chess piece.
