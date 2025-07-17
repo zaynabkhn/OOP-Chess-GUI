@@ -1,6 +1,6 @@
 package Pieces;
 
-import Utilities.Position;
+import Utilities.*;
 
 /**
  * This is the abstract class Piece that works as the base for all pieces in the Chess game.
