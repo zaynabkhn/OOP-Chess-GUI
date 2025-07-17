@@ -1,7 +1,6 @@
 package Pieces;
 
-import Utilities.Position;
-import Utils.Utils;
+import Utilities.*;
 
 /**
  * Represents a Knight chess piece, and Knights move in L-shaped patterns.
