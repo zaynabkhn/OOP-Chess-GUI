@@ -1,5 +1,5 @@
-import Board.Board;
-import Utilities.Position;
+import Board.*;
+import Utilities.*;
 import java.util.Scanner;
 
 /**
