@@ -1,5 +1,7 @@
 package Pieces;
 
+import Utilities.Position;
+
 /**
  * This is the abstract class Piece that works as the base for all pieces in the Chess game.
  */
@@ -25,6 +27,10 @@ public abstract class Piece {
     }
 
     public abstract boolean isValidMove(String toPosition);
+
+    public abstract void move(Position newPosition);
+
+    public abstract String[] possibleMoves();
 
     public abstract String toString();
 }
