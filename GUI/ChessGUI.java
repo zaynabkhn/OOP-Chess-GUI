@@ -65,9 +65,14 @@ public class ChessGUI extends JFrame {
     }
 
     private void clearSelection() {
-        for (var[] arr : squares) for (JButton b : arr) b.setBorder(null);
-        selectedPosition = null;
+    for (JButton[] row : squares) {
+        for (JButton b : row) {
+            b.setBorder(null);
+        }
     }
+    selectedPosition = null;
+}
+
 
     private void refreshBoard() {
         for (int row=0; row<8; row++) for (int col=0; col<8; col++) {
