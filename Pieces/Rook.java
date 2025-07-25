@@ -19,10 +19,23 @@ public class Rook extends Piece {
         super(color, position);
     }
 
+    // ZAINAB
     @Override
     public boolean isValidMove(String toPosition) {
-        // Stub logic – just return true for now
-        return true;
+    int fromCol = position.charAt(0) - 'A';
+    int fromRow = 8 - Character.getNumericValue(position.charAt(1));
+    int toCol = toPosition.charAt(0) - 'A';
+    int toRow = 8 - Character.getNumericValue(toPosition.charAt(1));
+
+    // Rook moves either in the same row or same column
+    if (fromRow == toRow && fromCol != toCol) {
+        return true; // horizontal move
+    }
+    if (fromCol == toCol && fromRow != toRow) {
+        return true; // vertical move
+    }
+
+    return false;
     }
 
     /**

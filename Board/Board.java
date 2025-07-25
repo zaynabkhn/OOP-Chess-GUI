@@ -35,13 +35,13 @@ public class Board {
         // Row 1 - Black pawns
         for (int col = 0; col < 8; col++) {
             char file = (char) ('A' + col);
-            board[1][col] = new Pawn(1, file + "7");
+            board[1][col] = new Pawn(1, file + "7");  // ZAINAB: Added black pawns initialization
         }
 
         // Row 6 - White pawns
         for (int col = 0; col < 8; col++) {
             char file = (char) ('A' + col);
-            board[6][col] = new Pawn(0, file + "2");
+            board[6][col] = new Pawn(0, file + "2");  // ZAINAB: Added white pawns initialization
         }
 
         // Row 7 - White major pieces
@@ -108,36 +108,46 @@ public class Board {
      * @param to - Object of type Position that gives the coordinate of the end position of a piece.
      * @return - none
      */
+    
     public void movePiece(Position from, Position to) {
-        int fromRow = from.getRow();
-        int fromCol = from.getColumn();
-        int toRow = to.getRow();
-        int toCol = to.getColumn();
+    int fromRow = from.getRow();
+    int fromCol = from.getColumn();
+    int toRow = to.getRow();
+    int toCol = to.getColumn();
 
-        Piece movingPiece = board[fromRow][fromCol];
+    Piece movingPiece = board[fromRow][fromCol];
 
-        if (movingPiece == null) {
-            System.out.println("No piece at source position.");
-            return;
-        }
-
-        if (board[toRow][toCol] != null &&
-            board[toRow][toCol].getColor() == movingPiece.getColor()) {
-            System.out.println("Cannot capture your own piece.");
-            return;
-        }
-
-        // Move the piece
-        board[toRow][toCol] = movingPiece;
-        board[fromRow][fromCol] = null;
-
-        // Update piece's internal position
-        String newPos = "" + (char) ('A' + toCol) + (8 - toRow);
-        movingPiece.setPosition(newPos);
-
-        System.out.println("Moved " + movingPiece.getClass().getSimpleName() +
-            " to " + movingPiece.getPosition());
+    if (movingPiece == null) {
+        System.out.println("No piece at source position.");
+        return;
     }
+
+    if (board[toRow][toCol] != null &&
+        board[toRow][toCol].getColor() == movingPiece.getColor()) {
+        System.out.println("Cannot capture your own piece.");
+        return;
+    }
+
+    // ZAINAB: Temporarily disabling move validation for Phase 2
+    /*
+    String toPosStr = "" + (char)('A' + toCol) + (8 - toRow);
+    if (!movingPiece.isValidMove(toPosStr)) {
+        System.out.println("Invalid move for " + movingPiece.getClass().getSimpleName());
+        return;
+    }
+    */
+
+    // Update the piece's internal position without validation
+    String toPosStr = "" + (char)('A' + toCol) + (8 - toRow);
+    movingPiece.setPosition(toPosStr);
+
+    // Move the piece on the board array
+    board[toRow][toCol] = movingPiece;
+    board[fromRow][fromCol] = null;
+
+    System.out.println("Moved " + movingPiece.getClass().getSimpleName() +
+        " to " + movingPiece.getPosition());
+}
 
     /**
      * Checks if a piece is in bounds, given coordinates.
@@ -150,4 +160,3 @@ public class Board {
         return row >= 0 && row < 8 && col >= 0 && col < 8;
     }
 }
-

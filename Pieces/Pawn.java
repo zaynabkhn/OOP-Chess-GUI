@@ -20,11 +20,39 @@ public class Pawn extends Piece {
     public Pawn(int color, String position) {
         super(color, position);
     }
-
+    // ZAINAB 
     @Override
     public boolean isValidMove(String toPosition) {
-        // Placeholder logic
+    // Convert current position and toPosition to row/col for calculation
+    int fromCol = position.charAt(0) - 'A';
+    int fromRow = 8 - Character.getNumericValue(position.charAt(1));
+    int toCol = toPosition.charAt(0) - 'A';
+    int toRow = 8 - Character.getNumericValue(toPosition.charAt(1));
+
+    int direction = (color == 0) ? -1 : 1; // white moves "up" (-1), black moves "down" (+1)
+
+    int rowDiff = toRow - fromRow;
+    int colDiff = toCol - fromCol;
+
+    // Normal move forward by 1
+    if (colDiff == 0 && rowDiff == direction) {
         return true;
+    }
+
+    // First move can move forward by 2 squares
+    if (colDiff == 0 && rowDiff == 2 * direction) {
+        if ((color == 0 && fromRow == 6) || (color == 1 && fromRow == 1)) {
+            return true;
+        }
+    }
+
+    // Capture diagonally by 1 square
+    if (Math.abs(colDiff) == 1 && rowDiff == direction) {
+        return true;
+    }
+
+    // Otherwise invalid move
+    return false;
     }
 
     @Override
