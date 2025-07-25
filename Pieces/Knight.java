@@ -20,10 +20,19 @@ public class Knight extends Piece {
         super(color, position);
     }
 
+    // ZAINAB
     @Override
     public boolean isValidMove(String toPosition) {
-        // Placeholder logic
-        return true;
+        int fromCol = position.charAt(0) - 'A';
+        int fromRow = 8 - Character.getNumericValue(position.charAt(1));
+        int toCol = toPosition.charAt(0) - 'A';
+        int toRow = 8 - Character.getNumericValue(toPosition.charAt(1));
+
+        int rowDiff = Math.abs(toRow - fromRow);
+        int colDiff = Math.abs(toCol - fromCol);
+
+        // Knight moves in L shape: 2 by 1 or 1 by 2
+        return (rowDiff == 2 && colDiff == 1) || (rowDiff == 1 && colDiff == 2);
     }
 
     /**

@@ -25,9 +25,20 @@ public class King extends Piece {
      * @param toPosition The destination square
      * @return true (placeholder for now)
      */
+    
+    // ZAINAB
     @Override
     public boolean isValidMove(String toPosition) {
-        return true; // Movement validation not required in Phase 2
+        int fromCol = position.charAt(0) - 'A';
+        int fromRow = 8 - Character.getNumericValue(position.charAt(1));
+        int toCol = toPosition.charAt(0) - 'A';
+        int toRow = 8 - Character.getNumericValue(toPosition.charAt(1));
+
+        int rowDiff = Math.abs(toRow - fromRow);
+        int colDiff = Math.abs(toCol - fromCol);
+
+        // King moves exactly one square in any direction (horizontal, vertical, diagonal)
+        return (rowDiff <= 1) && (colDiff <= 1) && !(rowDiff == 0 && colDiff == 0);
     }
 
     /**

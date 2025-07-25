@@ -13,10 +13,31 @@ public class Queen extends Piece {
         super(color, position);
     }
 
+//  ZAINAB
     @Override
     public boolean isValidMove(String toPosition) {
-        // Placeholder logic
-        return true;
+        int fromCol = position.charAt(0) - 'A';
+        int fromRow = 8 - Character.getNumericValue(position.charAt(1));
+        int toCol = toPosition.charAt(0) - 'A';
+        int toRow = 8 - Character.getNumericValue(toPosition.charAt(1));
+
+        int rowDiff = Math.abs(toRow - fromRow);
+        int colDiff = Math.abs(toCol - fromCol);
+
+        // Queen moves like rook or bishop:
+        // vertical/horizontal: same row or same column
+        if (fromRow == toRow && fromCol != toCol) {
+            return true; // horizontal move
+        }
+        if (fromCol == toCol && fromRow != toRow) {
+            return true; // vertical move
+        }
+        // diagonal moves
+        if (rowDiff == colDiff && rowDiff != 0) {
+            return true;
+        }
+
+        return false;
     }
 
     @Override
