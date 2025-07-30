@@ -2,10 +2,10 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import Board.Board;
 import Utilities.Position;
 import Pieces.Piece;
+import Pieces.King;
 
 /**
  * ChessGUI sets up the graphical interface for the Chess game,
@@ -17,30 +17,20 @@ public class ChessGUI extends JFrame
     private final JButton[][] squares = new JButton[8][8];
     private final Board board = new Board();
     private Position selectedPosition = null;
+    private int currentPlayer = 0; // 0 = white, 1 = black
 
-    /**
-     * Constructs a GUI for the Chess game.
-     *
-     * @param - none
-     * @return - none
-     */
     public ChessGUI() 
     {
         setTitle("Java Chess");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
-        add(boardPanel);
+        setLayout(new BorderLayout());
+        add(boardPanel, BorderLayout.CENTER);
         initializeBoard();
         refreshBoard();
         setVisible(true);
     }
 
-    /**
-     * Initializes the GUI board with buttons to make the board interactible.
-     *
-     * @param - none
-     * @return - none
-     */
     private void initializeBoard() 
     {
         boardPanel.removeAll();
@@ -50,7 +40,7 @@ public class ChessGUI extends JFrame
             {
                 JButton btn = new JButton();
                 btn.setOpaque(true);
-                btn.setBackground((row + col) % 2 == 0 ? Color.LIGHT_GRAY : Color.DARK_GRAY);
+                btn.setBackground((row + col) % 2 == 0 ? Color.WHITE : Color.GRAY);
                 final int r = row, c = col;
                 btn.addActionListener(e -> handleClick(r, c));
                 squares[row][col] = btn;
@@ -60,19 +50,18 @@ public class ChessGUI extends JFrame
     }
 
     /**
-     * Operates instructions for play depending on if a selected position has a piece on it or not.
-     *
-     * @param row - Gives an int that tells what row the selection is on.
-     * @param col - Gives an int that tells what row the selection is on.
-     * @return - none
+     * Handles clicks by selecting pieces or attempting a move.
+     * Verifies turn-based movement, detects check/checkmate, and updates turns.
      */
     private void handleClick(int row, int col) 
     {
         Position pos = new Position(row, col);
         Piece piece = board.getPiece(pos);
+
         if (selectedPosition == null) 
         {
-            if (piece != null) 
+            // Only allow selecting your own piece
+            if (piece != null && piece.getColor() == currentPlayer) 
             {
                 selectedPosition = pos;
                 squares[row][col].setBorder(BorderFactory.createLineBorder(Color.RED, 3));
@@ -80,26 +69,43 @@ public class ChessGUI extends JFrame
         } 
         else 
         {
-            Piece moving = board.getPiece(selectedPosition);
-            Piece target = board.getPiece(pos);
-            board.movePiece(selectedPosition, pos);
+            boolean success = board.movePiece(selectedPosition, pos);
+            clearSelection();
+
+            if (!success) 
+            {
+                JOptionPane.showMessageDialog(this, "Invalid move!");
+                return;
+            }
+
             refreshBoard();
-            if (target instanceof Pieces.King) 
+
+            // Check for game end by King capture (fallback)
+            if (piece instanceof King) 
             {
                 JOptionPane.showMessageDialog(this,
-                    (moving.getColor() == 0 ? "White" : "Black") + " wins by capturing the King!");
+                    (currentPlayer == 0 ? "White" : "Black") + " wins by capturing the King!");
                 System.exit(0);
             }
-            clearSelection();
+
+            // Check/checkmate logic after successful move
+            int opponent = 1 - currentPlayer;
+            if (board.isCheckmate(opponent)) 
+            {
+                JOptionPane.showMessageDialog(this,
+                    "Checkmate! " + (currentPlayer == 0 ? "White" : "Black") + " wins!");
+                System.exit(0);
+            } 
+            else if (board.isInCheck(opponent)) 
+            {
+                JOptionPane.showMessageDialog(this,
+                    (opponent == 0 ? "White" : "Black") + " is in check!");
+            }
+
+            currentPlayer = opponent;
         }
     }
 
-    /**
-     * Clears any selected buttons to longer have a selection indicator.
-     *
-     * @param - none
-     * @return - none
-     */
     private void clearSelection() 
     {
         for (JButton[] row : squares) 
@@ -112,27 +118,18 @@ public class ChessGUI extends JFrame
         selectedPosition = null;
     }
 
-    /**
-     * This sets the board to the newest state after it is called.
-     *
-     * @param - none
-     * @return - none
-     */
     private void refreshBoard() 
     {
-        for (int row=0; row<8; row++) for (int col=0; col<8; col++) 
+        for (int row = 0; row < 8; row++) 
         {
-            Piece p = board.getPiece(new Position(row, col));
-            squares[row][col].setText(p != null ? p.toString() : "");
+            for (int col = 0; col < 8; col++) 
+            {
+                Piece p = board.getPiece(new Position(row, col));
+                squares[row][col].setText(p != null ? p.toString() : "");
+            }
         }
     }
 
-    /**
-     * Instantiates that a new GUI will be set for later use.
-     *
-     * @param String[] args - Gives String arguments to use Swing utilities later.
-     * @return - none
-     */
     public static void main(String[] args) 
     {
         SwingUtilities.invokeLater(ChessGUI::new);
