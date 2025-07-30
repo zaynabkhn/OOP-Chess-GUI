@@ -19,12 +19,6 @@ public class ChessGUI extends JFrame
     private Position selectedPosition = null;
     private int currentPlayer = 0; // 0 = white, 1 = black
 
-    /**
-     * Constructs a GUI for the Chess game.
-     *
-     * @param - none
-     * @return - none
-     */
     public ChessGUI() 
     {
         setTitle("Java Chess");
@@ -37,12 +31,6 @@ public class ChessGUI extends JFrame
         setVisible(true);
     }
 
-    /**
-     * Initializes the GUI board with buttons to make the board interactible.
-     *
-     * @param - none
-     * @return - none
-     */
     private void initializeBoard() 
     {
         boardPanel.removeAll();
@@ -62,12 +50,8 @@ public class ChessGUI extends JFrame
     }
 
     /**
-     * Operates instructions for play depending on if a selected position has a piece on it or not.
-     * Now also verifies turn-based movement, detects check/checkmate, and updates turns.
-     *
-     * @param row - Gives an int that tells what row the selection is on.
-     * @param col - Gives an int that tells what column the selection is on.
-     * @return - none
+     * Handles clicks by selecting pieces or attempting a move.
+     * Verifies turn-based movement, detects check/checkmate, and updates turns.
      */
     private void handleClick(int row, int col) 
     {
@@ -122,12 +106,6 @@ public class ChessGUI extends JFrame
         }
     }
 
-    /**
-     * Clears any selected buttons to no longer have a selection indicator.
-     *
-     * @param - none
-     * @return - none
-     */
     private void clearSelection() 
     {
         for (JButton[] row : squares) 
@@ -140,12 +118,6 @@ public class ChessGUI extends JFrame
         selectedPosition = null;
     }
 
-    /**
-     * This sets the board to the newest state after it is called.
-     *
-     * @param - none
-     * @return - none
-     */
     private void refreshBoard() 
     {
         for (int row = 0; row < 8; row++) 
@@ -158,12 +130,6 @@ public class ChessGUI extends JFrame
         }
     }
 
-    /**
-     * Instantiates that a new GUI will be set for later use.
-     *
-     * @param String[] args - Gives String arguments to use Swing utilities later.
-     * @return - none
-     */
     public static void main(String[] args) 
     {
         SwingUtilities.invokeLater(ChessGUI::new);
