@@ -29,7 +29,7 @@ public class King extends Piece {
      */
     @Override
     public String toString() {
-        return (color == 0 ? "w" : "b") + "K";
+        return color == 0 ? "\u2654" : "\u265A"; // ♔ or ♚
     }
 
     /**
