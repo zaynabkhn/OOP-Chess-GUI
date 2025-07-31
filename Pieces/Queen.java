@@ -92,6 +92,6 @@ public class Queen extends Piece {
      */
     @Override
     public String toString() {
-        return (color == 0 ? "w" : "b") + "Q";
+        return color == 0 ? "\u2655" : "\u265B"; // ♕ or ♛
     }
 }
