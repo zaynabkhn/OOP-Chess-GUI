@@ -142,6 +142,6 @@ public class Rook extends Piece {
      */
     @Override
     public String toString() {
-        return (color == 0 ? "w" : "b") + "R";
+        return color == 0 ? "\u2656" : "\u265C"; // ♖ or ♜
     }
 }
