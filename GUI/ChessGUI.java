@@ -158,6 +158,12 @@ public class ChessGUI extends JFrame
         }
     }
 
+    /**
+     * Main program for the GUI itself.
+     *
+     * @param String args[] - Arguments of type String that allow the main() method to run.
+     * @return - none
+     */
     public static void main(String[] args) 
     {
         SwingUtilities.invokeLater(ChessGUI::new);
