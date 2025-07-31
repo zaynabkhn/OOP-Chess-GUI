@@ -165,7 +165,8 @@ public class Bishop extends Piece {
      * @return - "wB" for white bishop, "bB" for black bishop
      */
     @Override
-    public String toString() {
-        return (color == 0 ? "w" : "b") + "B";
+    public String toString() 
+    {
+        return color == 0 ? "\u2657" : "\u265D"; // ♗ for white, ♝ for black
     }
 }
