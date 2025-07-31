@@ -152,7 +152,7 @@ public class Pawn extends Piece {
      */
     @Override
     public String toString() {
-        return (color == 0 ? "w" : "b") + "P";
+        return color == 0 ? "\u2659" : "\u265F"; // ♙ or ♟
     }
 
     /**
